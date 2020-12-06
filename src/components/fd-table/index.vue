@@ -2,7 +2,7 @@
   <div class="fd-table">
     <el-table
       v-loading="loading"
-      :data="tableData"
+      :data="list"
       v-bind="$attrs"
       element-loading-text="数据正在加载中"
       border
@@ -33,6 +33,7 @@
             <MyRender :render="item.render" :scope="scope" />
           </template>
         </el-table-column>
+
         <!-- 正常渲染 -->
         <el-table-column
           v-else
@@ -63,7 +64,10 @@
 </template>
 
 <script>
-import MyRender from './Render';
+import MyRender from '@/components/fd-table/Render';
+import { formatTime } from '@/utils';
+import { getList } from './core';
+
 export default {
   name: 'fdTable',
   components: { MyRender },
@@ -104,6 +108,11 @@ export default {
       default: false
     },
   },
+  computed: {
+    list() {
+      return getList(this.options, this.tableData);
+    }
+  },
   methods: {
     onSizeChange(val) {
       this.$emit('changeSize', val);
@@ -114,6 +123,10 @@ export default {
       this.$emit('change', val);
       this.$emit('changePage', val);
     },
+
+    formatTime(data) {
+      return formatTime(data);
+    }
   }
 };
 </script>

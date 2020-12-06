@@ -68,19 +68,20 @@ export default {
       ],
       // table: [],
       tables: [
-        { date: '2019', name: '一方', address: '广州' },
-        { date: '2020', name: '星宇', address: '广州' },
-        { date: '2021', name: '前端', address: 'fordeal' },
+        { date: 1607265511, name: '一方', address: '广州' },
+        { date: 1607265510, name: '星宇', address: '广州' },
+        { date: 1607265511856, name: '前端', address: 'fordeal' },
       ],
       // 列表配置项
       config: [
-        { key: 'date', title: '时间', props: { width: '100' } },
+        { key: 'date', title: '时间', props: { width: '180' }, format: true },
         { key: 'name', title: '姓名', slot: 'name' },
         { key: 'address', title: '地区', },
         {
           title: '操作', render: (_, { row }) =>
             <div>
               <el-button onClick={() => this.onUpdate(row)}>复制</el-button>
+              <el-button type="primary" onClick={() => this.onUpdate(row)}>粘贴</el-button>
             </div>
         },
       ],
