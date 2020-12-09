@@ -29,6 +29,7 @@ import FdSelect from '../base-components/select';
 import BaseDate from '../base-components/base-date';
 
 export default {
+  name: 'fdForm',
   components: {
     FdSelect,
     BaseDate
@@ -96,5 +97,5 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped>
 </style>

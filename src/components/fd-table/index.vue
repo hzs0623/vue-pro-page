@@ -46,7 +46,7 @@
       </template>
     </el-table>
 
-    <div v-if="hasPagination && total" class="table-footer">
+    <div v-if="hasPagination && total" class="my-table-footer">
       <el-pagination
         background
         :disabled="loading"
@@ -64,80 +64,78 @@
 </template>
 
 <script>
-import MyRender from '@/components/fd-table/Render';
-import { formatTime } from '@/utils';
-import { getList } from './core';
+import MyRender from "@/components/fd-table/Render";
+import { formatTime } from "@/utils";
+import { getList } from "./core";
 
 export default {
-  name: 'fdTable',
+  name: "fdTable",
   components: { MyRender },
   props: {
     // 值
     tableData: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     // 配置项
     options: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     // 是否分页
     hasPagination: {
       type: Boolean,
-      default: true
+      default: true,
     },
     pageSizes: {
       type: Array,
-      default: () => [10, 50, 100]
+      default: () => [10, 50, 100],
     },
     currentPage: {
       type: Number,
-      default: 0
+      default: 0,
     },
     pageSize: {
       type: Number,
-      default: 10
+      default: 10,
     },
     total: {
       type: Number,
-      default: 0
+      default: 0,
     },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
   computed: {
     list() {
       return getList(this.options, this.tableData);
-    }
+    },
   },
   methods: {
     onSizeChange(val) {
-      this.$emit('changeSize', val);
-      this.$emit('onSize', val);
+      this.$emit("changeSize", val);
+      this.$emit("onSize", val);
     },
 
-    onCurrentChange(val) {
-      this.$emit('change', val);
-      this.$emit('changePage', val);
+    onCurrentChange(page) {
+      this.$emit("change", page);
+      this.$emit("changePage", page);
     },
 
     formatTime(data) {
       return formatTime(data);
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style lang="less">
-.fd-table {
-  .table-footer {
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
+<style scoped>
+.fd-table .my-table-footer{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 </style>
 

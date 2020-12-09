@@ -1,28 +1,34 @@
 <template>
   <div>
-    <el-card>
+    <fd-main
+      :datas="formDatas"
+      @submit="onSubmit"
+      :tableData="tables"
+      :options="config"
+      :total="12"
+      @change="handleChange"
+    ></fd-main>
+    <!-- <el-card>
       <Fd-from :datas="formDatas" @submit="onSubmit">
-        <!-- <template v-slot:button="prop">
+        <template v-slot:button="prop">
         <el-button> {{ prop.form }} 哈哈哈 </el-button>
-      </template> -->
+      </template>
       </Fd-from>
-    </el-card>
+    </el-card> -->
 
-    <el-card style="margin-top: 20px">
+    <!-- <el-card style="margin-top: 20px">
       <Table :tableData="tables" :options="config" :total="12">
         <template v-slot:name="{ scope }">{{ scope.row.name }}</template>
       </Table>
-    </el-card>
+    </el-card> -->
   </div>
 </template>
 
 <script>
-import FdFrom from '../components/fd-form';
-import Table from '../components/fd-table';
+import fdMain from '@/components/fd-main'
 export default {
   components: {
-    FdFrom,
-    Table,
+    fdMain
   },
   data() {
     return {
@@ -95,10 +101,10 @@ export default {
     },
     onUpdate(row) {
       console.log(row);
+    },
+    handleChange(page) {
+      console.log(page)
     }
   }
 };
 </script>
-
-<style lang="less">
-</style>
