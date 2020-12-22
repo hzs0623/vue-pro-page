@@ -4,7 +4,6 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        // use: ["style-loader!css-loader!less-loader"]
         use: ["style-loader", "css-loader", "less-loader"]
       }
     ]
@@ -12,9 +11,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      // 'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      // 'common': resolve('src/common')
     }
   },
 }

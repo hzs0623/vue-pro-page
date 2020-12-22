@@ -30,7 +30,7 @@
       </el-form>
     </el-card>
 
-    <el-card class="fd-table">
+    <el-card class="fd-table" style="margin-top: 20px">
       <el-table
         :data="list"
         v-loading="loading"
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { getElementItem, getTableList } from "./utils";
+import { getElementItem, getTableList } from "@/components/utils";
 import FdSelect from "./base-components/Fd-select";
 import BaseDate from "./base-components/Base-date";
 import MyRender from "./base-components/Fd-render/index.vue";
@@ -102,7 +102,9 @@ export default {
   props: {
     form: {
       type: Array,
-      default: () => [],
+      default() {
+        return [];
+      },
     },
     inline: {
       type: Boolean,
@@ -195,9 +197,3 @@ export default {
   },
 };
 </script> 
-
-<style>
-.fd-main .fd-table {
-  margin-top: 20px;
-}
-</style>

@@ -25,7 +25,7 @@ const getRule = (item) => {
   return null
 }
 
-export const getElementItem = (val, form) => {
+export const getElementItem = (val) => {
   const item = { ...val };
   const res = elementMap[item.type || 'input']; // 默认input
   item.type = res.component; // 获取当前的类型

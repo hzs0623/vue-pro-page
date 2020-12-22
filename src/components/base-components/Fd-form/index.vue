@@ -29,8 +29,8 @@
 
 <script>
 import { getElementItem } from "../../utils";
-import FdSelect from "./base-components/Fd-select";
-import BaseDate from "./base-components/Base-date";
+import FdSelect from "@/components/base-components/Fd-select";
+import BaseDate from "@/components/base-components/Base-date";
 
 export default {
   name: "fd-form",
@@ -102,5 +102,3 @@ export default {
   },
 };
 </script> 
-<style>
-</style>

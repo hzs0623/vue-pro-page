@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import { getTableList } from "../../utils";
-import MyRender from "./base-components/Fd-render/index.vue";
+import { getTableList } from "@/components/utils";
+import MyRender from "@/components/base-components/Fd-render/index.vue";
 
 export default {
   name: "fd-table",
@@ -81,6 +81,4 @@ export default {
   methods: {},
   created() {},
 };
-</script> 
-<style scoped>
-</style>
+</script>

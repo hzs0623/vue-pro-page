@@ -1,6 +1,6 @@
-import FdMain from './Page-components/index.vue';
-import FdForm from './Page-components/base-components/Fd-form';
-import FdTable from './Page-components/base-components/Fd-table';
+import FdMain from './index.vue';
+import FdForm from './base-components/Fd-form';
+import FdTable from './base-components/Fd-table';
 
 export {
   FdMain,

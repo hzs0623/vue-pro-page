@@ -1,5 +1,5 @@
 <template >
-  <div class="pageination-wrap" v-if="total > 0">
+  <div style="margin-top: 30px; text-align: center" v-if="total > 0">
     <el-pagination
       background
       @size-change="handleSizeChange"
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'base-pagination',
+  name: "base-pagination",
   props: {
     currentPage: {
       type: [Number, String],
@@ -41,27 +41,20 @@ export default {
   },
   computed: {
     layout() {
-      const layoutMap = ['total, prev, pager, next, jumper'];
-      this.pageSizes.length && layoutMap.splice(1, 0, 'sizes');
-      return layoutMap.join(',');
+      const layoutMap = ["total, prev, pager, next, jumper"];
+      this.pageSizes.length && layoutMap.splice(1, 0, "sizes");
+      return layoutMap.join(",");
     },
   },
   methods: {
     // 页数
     handleSizeChange(size) {
-      this.$emit('changeSize', size, this.formData);
+      this.$emit("changeSize", size, this.formData);
     },
     // 页码
     handleCurrentChange(page) {
-      this.$emit('changePage', page, this.formData);
+      this.$emit("changePage", page, this.formData);
     },
   },
 };
 </script> 
-
-<style>
-.pageination-wrap {
-  margin-top: 30px;
-  text-align: center;
-}
-</style>
