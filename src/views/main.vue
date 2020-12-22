@@ -1,26 +1,15 @@
 <template>
   <div>
     <fd-main
+      :inline="true"
       :datas="formDatas"
       @submit="onSubmit"
       :tableData="tables"
       :options="config"
       :total="12"
       @change="handleChange"
-    ></fd-main>
-    <!-- <el-card>
-      <Fd-from :datas="formDatas" @submit="onSubmit">
-        <template v-slot:button="prop">
-        <el-button> {{ prop.form }} 哈哈哈 </el-button>
-      </template>
-      </Fd-from>
-    </el-card> -->
-
-    <!-- <el-card style="margin-top: 20px">
-      <Table :tableData="tables" :options="config" :total="12">
-        <template v-slot:name="{ scope }">{{ scope.row.name }}</template>
-      </Table>
-    </el-card> -->
+    >
+    </fd-main>
   </div>
 </template>
 
@@ -37,7 +26,6 @@ export default {
         title: '表单名称',
         key: 'username',
         type: 'input',
-        defaultValue: '123',
         contentWidth: 100,
         isRequired: true,
       },
@@ -84,7 +72,7 @@ export default {
         { key: 'name', title: '姓名', slot: 'name' },
         { key: 'address', title: '地区', },
         {
-          title: '操作', render: (_, { row }) =>
+          title: '操作', render: (h, { row }) =>
             <div>
               <el-button onClick={() => this.onUpdate(row)}>复制</el-button>
               <el-button type="primary" onClick={() => this.onUpdate(row)}>粘贴</el-button>

@@ -1,9 +1,9 @@
-import BaseTable from './fd-table';
-import BaseForm from './fd-form';
-import BaseMain from './fd-main';
+import FdMain from './Page-components/index.vue';
+import FdForm from './Page-components/base-components/Fd-form';
+import FdTable from './Page-components/base-components/Fd-table';
 
 export {
-  BaseTable,
-  BaseForm,
-  BaseMain
+  FdMain,
+  FdForm,
+  FdTable
 }

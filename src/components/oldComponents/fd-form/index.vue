@@ -1,5 +1,5 @@
 <template>
-  <el-form :inline="true" ref="form" :model="form" v-bind="$attrs">
+  <el-form  ref="form" :model="form" v-bind="$attrs">
     <el-form-item
       v-for="item in getItem"
       :label="item.title"

@@ -9,10 +9,21 @@
       style="width: 100%"
     >
       <template v-for="item in options">
+        <!-- 有render -->
+        <el-table-column
+          v-if="item.render"
+          :key="item.key"
+          v-bind="item.props"
+          :label="item.title"
+        >
+          <template slot-scope="scope">
+            <MyRender :render="item.render" :scope="scope" />
+          </template>
+        </el-table-column>
         <!-- 有插槽 -->
         <el-table-column
           :key="item.key"
-          v-if="item.slot"
+          v-else
           v-bind="item.props"
           :label="item.title"
         >
@@ -22,27 +33,15 @@
             }}</slot>
           </template>
         </el-table-column>
-        <!-- 有render -->
-        <el-table-column
-          v-else-if="item.render"
-          :key="item.key"
-          v-bind="item.props"
-          :label="item.title"
-        >
-          <template slot-scope="scope">
-            <MyRender :render="item.render" :scope="scope" />
-          </template>
-        </el-table-column>
-
         <!-- 正常渲染 -->
-        <el-table-column
+        <!-- <el-table-column
           v-else
           v-bind="item.props"
           :key="item.key"
           :prop="item.key"
           :label="item.title"
         >
-        </el-table-column>
+        </el-table-column> -->
       </template>
     </el-table>
 
@@ -60,6 +59,7 @@
       >
       </el-pagination>
     </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -132,7 +132,7 @@ export default {
 </script>
 
 <style scoped>
-.fd-table .my-table-footer{
+.fd-table .my-table-footer {
   padding-top: 20px;
   display: flex;
   justify-content: center;
