@@ -1,6 +1,17 @@
+const { resolve } = require('path');
 module.exports = {
-  rules: [{
-    test: /\.less$/,
-    loader: "style-loader!css-loader!less-loader",
-  }]
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "less-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': resolve('src'),
+    }
+  },
 }

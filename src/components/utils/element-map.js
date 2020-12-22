@@ -46,25 +46,26 @@ export default {
 		}
 	},
 
+
+	/* 
+	*  自定义组件
+	*/
+	select: {
+		component: 'fd-select',
+		props: {
+			filterable: true, // 默认开启模糊搜索
+			clearable: true // 默认开启清除功能
+		}
+	},
+
 	// 日期时间
 	datepicker: {
-		component: 'Base-date',
+		component: 'BaseDate',
 		props: {
-			type: "daterange",
+			type: "datetimerange",
 			rangeSeparator: "至",
 			startPlaceholder: "开始日期",
 			endPlaceholder: "结束日期",
 		}
 	},
-
-	// 自定义组件
-	select: {
-		component: 'Fd-select',
-		props: {
-			filterable: true,
-			clearable: true
-		}
-	}
-
-
 };

@@ -1,11 +1,12 @@
 {
-  "name": "fd-vue-admin",
-  "version": "0.1.0",
-  "private": true,
+  "name": "yifang-vue-admin",
+  "version": "0.0.1",
+  "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "yifang": "vue-cli-service build --target lib ./src/yifang/index.js --dest yifang --name yifang"
   },
   "dependencies": {
     "core-js": "^3.6.5",

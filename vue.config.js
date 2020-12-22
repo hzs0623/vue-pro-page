@@ -4,7 +4,7 @@ module.exports = {
   configureWebpack: config => {
     config.plugins.forEach((val) => {
       if (val instanceof HtmlWebpackPlugin) {
-        val.options.title = "后台组件"
+        val.options.title = "页面组件"
       }
     })
   }
