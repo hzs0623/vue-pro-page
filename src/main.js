@@ -3,12 +3,10 @@ import App from './App.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import DynamicPage from './components/Page-components'
-Vue.component(DynamicPage.name, DynamicPage);
-
-Vue.
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
+Vue.component(DynamicPage.name, DynamicPage);
 
 new Vue({
   render: h => h(App),

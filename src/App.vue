@@ -5,8 +5,10 @@
 </template>
 
 <script>
-import Main from "./demo/index";
+import Main from "./demo";
 export default {
-  Main,
+  components: {
+    Main,
+  },
 };
 </script>

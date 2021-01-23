@@ -1,14 +1,24 @@
 import elementMap from './element-map';
-import { isObj, isArray, getIntervalTime, lang } from './utils';
+import { isObj, isArray, getIntervalTime, } from './utils';
 
-const inputMap = ['el-input', 'el-input-number'];
-const getRule = (item, vm) => {
+const lang = (key) => {
+  const map = {
+    please_input:'请输入',
+    please_select: '请选择'
+  }
+  return map[key];
+}
+
+const inputMap = ['el-input', 'el-input-number', 'Input'];
+const getRule = (item) => {
   const { type, isRequired, rule, title } = item;
   if (typeof isRequired === 'boolean' && isRequired) {
+    console.log(type)
     const isInput = inputMap.indexOf(type) > -1;
+    console.log(isInput)
     return {
       required: true,
-      message: `${isInput ? lang('please_input', vm) : lang('please_select', vm)}${title}`,
+      message: `${isInput ? lang('please_input') : lang('please_select')}${title}`,
       trigger: `${isInput ? 'blur' : 'change'}`
     }
   } else if (isObj(rule) || isArray(rule)) {
