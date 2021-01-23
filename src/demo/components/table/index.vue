@@ -56,6 +56,7 @@ export default {
       }
       return newArr;
     },
+    // eslint-disable-next-line no-unused-vars
     changePage(page, form) {
       this.currentPage = page;
       this.getList();

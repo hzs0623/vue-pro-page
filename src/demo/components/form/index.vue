@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     search(form, valid) {
-      console.log(form);
+      console.log(form, valid);
     },
   },
 };

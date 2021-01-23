@@ -1,6 +1,7 @@
-// import { messages } from '../../../i18n';
-
-// export const lang = (key, vm) => vm.$i18n ? vm.$i18n._t(key, vm.$i18n.locale, messages, null) : key;
+/*
+** 职责： 工具函数
+**
+*/
 
 export const isObj = obj => Object.prototype.toString.call(obj) === "[object Object]";
 
