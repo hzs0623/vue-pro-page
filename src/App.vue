@@ -5,10 +5,8 @@
 </template>
 
 <script>
-import Main from "./views/main";
+import Main from "./demo/index";
 export default {
-  components: {
-    Main,
-  },
+  Main,
 };
 </script>

@@ -1,5 +1,5 @@
 {
-  "name": "yifang-vue-admin",
+  "name": "vue-dynamic-page",
   "version": "0.0.1",
   "private": false,
   "scripts": {
@@ -13,7 +13,8 @@
     "element-ui": "^2.14.1",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.22.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
