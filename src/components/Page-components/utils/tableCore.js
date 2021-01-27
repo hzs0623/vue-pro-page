@@ -3,7 +3,7 @@ import { isArray, isObj } from './utils';
 // 时间戳格式化
 export function formatTime(origin, option) {
   if (!origin || isObj(option)) {
-    return origin
+    return origin === 0 ? '' : origin
   }
 
   const timeMap = {
@@ -59,7 +59,7 @@ export function getTableList(config, dataList) {
     const list = JSON.parse(JSON.stringify(dataList));
 
     config.forEach(v => {
-      const { format, key = "", map } = v || {};
+      const {  key = "", map } = v || {};
 
       if (map && isObj(map) || isArray(map)) { //映射字段数据 兼容数组
         list.forEach(item => {
@@ -72,12 +72,6 @@ export function getTableList(config, dataList) {
           } else {
             item[key] = map[item[key]];
           }
-        })
-      }
-
-      if (format && typeof format === 'boolean') { //格式化时间
-        list.forEach(item => {
-          item[key] = formatTime(item[key]);
         })
       }
     });

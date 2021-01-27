@@ -6,7 +6,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "yifang": "vue-cli-service build --target lib ./src/yifang/index.js --dest yifang --name yifang"
+    "daes": "vue-cli-service build --target lib ./src/yifang/index.js --dest daes --name yifang"
   },
   "dependencies": {
     "core-js": "^3.6.5",
