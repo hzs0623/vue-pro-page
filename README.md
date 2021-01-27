@@ -5,14 +5,7 @@
 ## Development
 
 ```bash
-$ git clone https://github.com/hzs0623/vue-dynamic-page.git
-$ cd vue-dynamic-page
-$ yarn
-$ yarn build
-```
-
-```bash
-$ yarn add @vue-dynamic-page
+$ yarn add vue-pro-page
 ```
 
 
