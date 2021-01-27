@@ -33,9 +33,7 @@
           <el-button type="primary" @click="onSearch" icon="el-icon-search">{{
             searchText
           }}</el-button>
-          <el-button @click="onReset" icon="el-icon-refresh">{{
-            clearText
-          }}</el-button>
+          <el-button @click="onReset" icon="el-icon-refresh">{{ clearText }}</el-button>
         </el-form-item>
         <slot name="formData" :form="getFormData()" />
       </el-form>
@@ -113,7 +111,7 @@
                 :row="scope.row"
                 :column="scope.column"
                 :index="scope.$index"
-                >{{ scope.row[item.key] }}</slot
+                >{{ getItemTable(scope, item.key) }}</slot
               >
             </template>
           </el-table-column>
@@ -290,6 +288,13 @@ export default {
     // 过滤列表时间
     getTime(option, current) {
       return formatTime(current, option);
+    },
+
+    getItemTable({ row, $index: index }, key) {
+      const { props = {} } = row;
+      const { type } = props;
+      if (type === "index") return ++index;
+      return row[key];
     },
   },
   mounted() {
