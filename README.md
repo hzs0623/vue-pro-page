@@ -1,4 +1,4 @@
-# vue-dynamic-page
+# vue-pro-page
 
 # 中后台页面组件
 
