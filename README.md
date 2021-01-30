@@ -43,13 +43,13 @@ $ yarn add vue-pro-page
 ```javascript
 --全局引入--
 import Vue from 'vue';
-import DynamicPage from '@vue-dynamic-page';// +
+import DynamicPage from 'vue-pro-page';// +
 Vue.use(DynamicPage);  // +
 
 or
 
 --单独引入--
-import { DynamicPage } from '@vue-dynamic-page'; // +
+import { DynamicPage } from 'vue-pro-page'; // +
 Vue.component(DynamicPage.name, DynamicPage);   // +
 
 ```
