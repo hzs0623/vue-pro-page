@@ -2,7 +2,7 @@
 
 # 中后台页面组件
 
-[demo](https://hzs0623.github.io/vue-pro-page.io/)
+[demo](https://hzs0623.github.io/vue-pro-page/)
 
 ## Development
 
