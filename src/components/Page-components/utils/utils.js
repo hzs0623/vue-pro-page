@@ -18,17 +18,15 @@ export const getIntervalTime = (interval = 0) => {
 
 // 深拷贝  缺点： 嵌套太深性能问题
 export const deepCopy = (obj) => {
-  const newobj = isArray(obj) ? [] : {};
-  if (typeof obj !== 'object' || obj === null) {
-    return obj;
-  } else {
-    for (let i in obj) {
-      if (typeof obj[i] === 'object') {
-        newobj[i] = deepCopy(obj[i]);  //若是对象进行递归
-      } else {
-        newobj[i] = obj[i];
-      }
+  if (obj === null || typeof obj !== 'object') return obj;
+  const newObj = Array.isArray(obj) ? [] : Object.create(null);
+  for (let i in obj) {
+    if (Array.isArray(obj)) {
+      newObj[i] = obj[i];
+    } else {
+      newObj[i] = deepCopy(obj[i]);
     }
   }
-  return newobj;
+
+  return newObj;
 }
