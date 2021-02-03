@@ -3,18 +3,26 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
+    "test": "jest --watch",
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
     "daes": "vue-cli-service build --target lib ./src/index.js --dest daes --name daes"
   },
   "dependencies": {
+    "@vue/test-utils": "^1.1.2",
+    "axios": "^0.21.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^26.6.3",
+    "babel-preset-env": "^1.7.0",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
+    "identity-obj-proxy": "^3.0.0",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
     "vue": "^2.6.11",
-    "vue-i18n": "^8.22.4"
+    "vue-i18n": "^8.22.4",
+    "vue-jest": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,6 +31,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest": "^26.6.3",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -43,5 +52,25 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html",
+      "text-summary"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  }
 }

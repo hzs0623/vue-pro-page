@@ -18,7 +18,7 @@ const getRule = (item) => {
   return null
 }
 
-export const getElementItem = (val, vm) => {
+export const getElementItem = (val) => {
   const item = { ...val };
   const componentType = getComponentType(item.type);
 
@@ -34,7 +34,7 @@ export const getElementItem = (val, vm) => {
   }
 
   // 校验
-  item._rule = getRule(item, vm);
+  item._rule = getRule(item);
 
   if (item.contentWidth) {
     // 默认宽度200px  可以传递Number和String
@@ -53,7 +53,7 @@ function getComponentType(type) {
 }
 
 // 获取日期 传递了mapkey的 key值。
-const getKeyMaps = (data) => {
+export const getKeyMaps = (data) => {
   if (!isArray(data)) return [];
 
   const saveMap = new Set();
@@ -69,7 +69,7 @@ const getKeyMaps = (data) => {
 /*
 ** 格式化form
 ** origin: 配置原始值
-** data: 当前form值
+** data: 当前form值 object
 */
 export const getForm = (origins, data) => {
   const currentData = { ...data };
