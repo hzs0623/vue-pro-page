@@ -33,10 +33,10 @@ export default {
 
 	// 多行文本框
 	textarea: {
-		component: 'el-input',
+		component: 'Input',
 		props: {
 			type: 'textarea',
-			rows: 6,
+			rows: 2,
 			style: {
 				width: '300px'
 			}
