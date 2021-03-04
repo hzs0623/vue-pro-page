@@ -33,7 +33,9 @@
           <el-button type="primary" @click="onSearch" icon="el-icon-search">{{
             searchText
           }}</el-button>
-          <el-button @click="onReset" icon="el-icon-refresh">{{ clearText }}</el-button>
+          <el-button @click="onReset" icon="el-icon-refresh">{{
+            clearText
+          }}</el-button>
         </el-form-item>
         <slot name="formData" :form="getFormData()" />
       </el-form>
@@ -99,20 +101,23 @@
 
           <!-- 插槽渲染 -->
           <el-table-column
-            :key="item.key"
             v-else
+            :key="item.key"
             v-bind="item.props"
             :label="item.title"
             v-on="$listeners"
+            :prop="item.key"
           >
-            <template slot-scope="scope">
-              <slot
-                :name="item.key"
-                :row="scope.row"
-                :column="scope.column"
-                :index="scope.$index"
-                >{{ getItemTable(scope, item.key) }}</slot
-              >
+            <template v-if="getColumnConfig(item.props)">
+              <template slot-scope="scope">
+                <slot
+                  :name="item.key"
+                  :row="scope.row"
+                  :column="scope.column"
+                  :index="scope.$index"
+                  >{{ scope.row[item.key] }}</slot
+                >
+              </template>
             </template>
           </el-table-column>
         </template>
@@ -146,17 +151,33 @@ export default {
   mixins: [urlMixin, langMixin],
   watch: {
     tableConfig: {
-      handler(newVal) {
+      handler(newVal, od) {
         this.tableConfigs = newVal;
       },
       deep: true,
       immediate: true,
     },
   },
+  computed: {
+    getItem() {
+      return this.form.map((v) => getElementItem(v, this));
+    },
+
+    // 重置默认值
+    clearText() {
+      return this.resetText ? this.resetText : this.lang("reset");
+    },
+
+    // 搜索默认值
+    searchText() {
+      return this.sumbitText ? this.sumbitText : this.lang("search");
+    },
+  },
   data() {
     return {
       formData: this.formInit() || {},
       tableConfigs: [],
+      columnMap: ["index", "selection"], // table列map
     };
   },
   components: {
@@ -200,25 +221,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    isTableCheckBox: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    getItem() {
-      return this.form.map((v) => getElementItem(v, this));
-    },
-
-    // 重置默认值
-    clearText() {
-      return this.resetText ? this.resetText : this.lang("reset");
-    },
-
-    // 搜索默认值
-    searchText() {
-      return this.sumbitText ? this.sumbitText : this.lang("search");
-    },
+    isTableCheckBox: false,
   },
   methods: {
     // 初始化默认值
@@ -290,11 +293,10 @@ export default {
       return formatTime(current, option);
     },
 
-    getItemTable({ row, $index: index }, key) {
-      const { props = {} } = row;
+    // 处理table列
+    getColumnConfig(props = {}) {
       const { type } = props;
-      if (type === "index") return ++index;
-      return row[key];
+      return this.columnMap.indexOf(type) !== -1;
     },
   },
   mounted() {
