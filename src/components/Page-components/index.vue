@@ -99,6 +99,15 @@
             </template>
           </el-table-column>
 
+          <el-table-column
+            v-else-if="getColumnConfig(item.props)"
+            :key="item.key"
+            v-bind="item.props"
+            :label="item.title"
+            :prop="item.key"
+          >
+          </el-table-column>
+
           <!-- 插槽渲染 -->
           <el-table-column
             v-else
@@ -106,18 +115,15 @@
             v-bind="item.props"
             :label="item.title"
             v-on="$listeners"
-            :prop="item.key"
           >
-            <template v-if="getColumnConfig(item.props)">
-              <template slot-scope="scope">
-                <slot
-                  :name="item.key"
-                  :row="scope.row"
-                  :column="scope.column"
-                  :index="scope.$index"
-                  >{{ scope.row[item.key] }}</slot
-                >
-              </template>
+            <template slot-scope="scope">
+              <slot
+                :name="item.key"
+                :row="scope.row"
+                :column="scope.column"
+                :index="scope.$index"
+                >{{ scope.row[item.key] }}</slot
+              >
             </template>
           </el-table-column>
         </template>
