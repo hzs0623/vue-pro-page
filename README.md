@@ -359,3 +359,31 @@ export default {
   },
 }
 ```
+
+#### 首次加载页面获取form数据
+
+> 有的时候需要初始化的时候就进行查询列表，这时候需要触发一次搜索事件。下面就演示代码：
+
+```js
+<template> 
+	<dynamic-page
+     ref="page"
+		 @submit="handleSearch"
+    ></dynamic-page>
+</template>
+
+export default {
+ methods: {
+    getInit() { 
+     this.$refs['page'].onSearch();
+    },
+   handleSearch(form, valid) {
+     console.log(form); // 初始化会触发
+   }
+  },
+ created() {
+   this.getInit();
+ }
+}
+```
+
